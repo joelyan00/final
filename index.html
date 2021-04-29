@@ -1,0 +1,418 @@
+<!--
+Mobile Web Development
+ orignial created by Jianliang yan
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>First jQuery Application</title>
+    <!--jquery-->
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <!-- jquery-mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+
+    <script src="js/lib/jquery.validate.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet"   type="text/css"  href="css/jymystle.css">
+<!--    <link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.css">-->
+
+
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+            type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+            type="text/javascript" charset="utf-8"></script>
+
+    <!--    our script-->
+    <script src="js/jydatabase.js"></script>
+    <script src="js/jyfeedbackDAL.js"></script>
+    <script src="js/jyutil.js"></script>
+    <script src="js/jyfacade.js"></script>
+    <script src="js/jyglobal.js"></script>
+    <script src="js/geo.js"></script>
+
+
+    <!--    our style-->
+
+</head>
+<!----------------Log in page -------------------page--1------->
+<div id="jyloginPage" data-role="page">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>login in</h1>
+    </header>
+    <div data-role="content">
+        <h1>Login</h1>
+        <form method="post" id="loginForm">
+            <label for="jyLoginUserName">User Name:</label>
+            <input autocomplete="on" class="required" type="text" name="jyLoginUserName" id="jyLoginUserName"
+                   placeholder="username">
+            <label for="jyloginpassword">Password:</label>
+            <input autocomplete="on" class="required" type="text" name="jyloginpassword"
+                   id="jyloginpassword" placeholder="password">
+            <button type="button" id="jybtnSignIn" name="jybtnSignIn" data-role="button"
+                    class="ui-btn-active" >Sign In</button>
+            <button type="button" id="jybtnSignUp" name="jybtnSignUp" data-role="button"
+                    class="ui-btn-active" >Sign up</button>
+        </form>
+    </div>
+
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <h1>&copy 2021 Jianliang Yan</h1>
+    </footer>
+</div>
+
+
+<!---------------------------------------Sign up page ----------page 2 ------>
+<div id="JysignUpPage" data-role="page">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>Register Form</h1>
+    </header>
+    <section data-role="content">
+       <div>
+           <form id="jysingupForm" name="jysingupForm">
+               <label for="jytxtsigupUserName">User Name:</label>
+               <input type="text" name="jytxtsigupUserName" id="jytxtsigupUserName" placeholder="User name">
+               <label for="jytxtSingupEmail">Email:</label>
+               <input type="text" name="jytxtSingupEmail" id="jytxtSingupEmail" data-clear-btn="true"placeholder="Enter email">
+               <label for="jytxtSingupPassword">PassWord:</label>
+               <input type="password" name="jytxtSingupPassword" id="jytxtSingupPassword" data-clear-btn="true"placeholder="Enter password">
+               <label for="jytxtSingupPassword2">Re-enter Password:</label>
+               <input type="password" name="jytxtSingupPassword2" id="jytxtSingupPassword2" data-clear-btn="true"placeholder="Re Enter password">
+               <button type="button" id="jybtnSveUser" name="jybtnSveUser" data-role="button"
+                       class="ui-btn-active" style="width: 80px"> Save</button>
+               <button type="button" id="jybtnSignOut" name="jybtnSignOut" data-role="button"
+                       class="ui-btn-active" style="width: 80px"> Sign Out</button>
+           </form>
+       </div>
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <h1>&copy 2021 Jianliang Yan</h1>
+    </footer>
+</div>
+<!------------------ review all contacts page-------------------- page 3 ---->
+<div id="jyreviewConatactPage" data-role="page">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>All Contacts</h1>
+        <div data-role="navbar">
+            <ul>
+                <li>
+                    <a href="#jyreviewConatactPage" data-theme="a" data-icon="home" class=" ui-btn-icon-top ui-btn-active ui-state-persist"
+                        >View All</a>
+                </li>
+                <li>
+                    <a href="#jyAddContactPage" data-theme="a" data-icon="plus" class=" ui-btn-icon-top">Add</a>
+                </li>
+                <li>
+                    <a href="#jypageSetting" data-theme="a" data-icon="grid" class="ui-btn-icon-top"
+                       >Setting </a>
+                </li>
+                <li>
+                    <a href="#jyShowMap" data-theme="a" data-icon="grid" class="ui-btn-icon-top ui-icon-location"
+                    >Location </a>
+                </li>
+                <li>
+                    <a href="#jyAboutPage" data-theme="a" data-icon="gear" class="ui-btn-icon-top ui-icon-user">Developer</a>
+                </li>
+            </ul>
+
+        </div>
+    </header>
+    <section data-role="content">
+        <ul id ="jylvall" data-role="listview" class="ui-listview-inset">
+           <li >
+               <a href="#jyEditFeedbackPage" data-theme="a">
+               </a>
+           </li>
+        </ul>
+    </section>
+
+    <button type="button" id="jybtnSignOutMainPage" name="jybtnSignOutMainPage" data-role="button"
+            class="ui-btn-active" > Sign Out</button>
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <h1>&copy 2021 Jianliang Yan</h1>
+    </footer>
+</div>
+
+ <!------------------ add contact page ------------------------page 4 ------>
+<div id="jyAddContactPage" data-role="page">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>Add a Company Profile</h1>
+        <div data-role="navbar">
+            <ul>
+                <li>
+                    <a href="#jyreviewConatactPage" data-theme="a" data-icon="home" class="ui-btn-icon-top "
+                    >View All</a>
+                </li>
+                <li>
+                    <a href="#jyAddContactPage" data-theme="a" data-icon="plus"
+                       class=" ui-btn-active ui-btn-icon-top ui-state-persist" >Add</a>
+                </li>
+                <li>
+                    <a href="#jypageSetting" data-theme="a" data-icon="grid" class=" ui-btn-icon-top"
+                    >Setting</a>
+                </li>
+                <li>
+                    <a href="#jyShowMap" data-theme="a" data-icon="grid" class="ui-btn-icon-top ui-icon-location"
+                    >Location </a>
+                </li>
+                <li>
+                    <a href="#jyAboutPage" data-theme="a" data-icon="gear" class="ui-btn-icon-top ui-icon-user">Developer</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section data-role="content">
+        <div>
+            <form id="jyAddContactForm" name="jyAddContactForm">
+                <!--                // - company name &#45;&#45;//-->
+                <label for="jytxtNameAdd">Company Name:</label>
+                <input type="text" name="jytxtNameAdd"  id="jytxtNameAdd" placeholder="Enter name">
+                <!--                // &#45;&#45; type of company &#45;&#45;//-->
+                <label for="jytypeAdd">Type:</label>
+                <select name="jytypeAdd" id="jytypeAdd"> </select>
+                <!--                // &#45;&#45; email address-&#45;&#45; //-->
+
+                <!--                //-&#45;&#45; Description of the company &#45;&#45;//-->
+                <label for="jyReviewAdd">Description:</label>
+                <textarea name="jyReviewAdd" id="jyReviewAdd" data-clear-btn="true"cols="30" rows="10"
+                          placeholder=" Enter the business description of this company"></textarea>
+                <h1>Contact Information</h1>
+                <!--                // contact person full name &#45;&#45;//-->
+                <label for="jytxtFullName">Full Name</label>
+                <input type="text" name="jytxtFullName" id="jytxtFullName" data-clear-btn="true" placeholder="Enter full Name">
+                <!--               contact phone number &#45;&#45;//-->
+                <label for="jyPhoneNumber">Phone Number:</label>
+                <input type="number" name="jyPhoneNumber" id="jyPhoneNumber" data-clear-btn="true" placeholder="enter 9 digits phone number">
+                <!--                contact email address-->
+                <label for="jytxtEmailAdd">Email:</label>
+                <input type="text" name="jytxtEmailAdd" id="jytxtEmailAdd" data-clear-btn="true"placeholder="Enter email">
+                <!--                company address-->
+                <label for="jytxtAddress">Company Address</label>
+                <input type="text" name="jytxtAddress" id="jytxtAddress" data-clear-btn="true" placeholder="Enter company address">
+                <!--                  company home page-->
+                <label for="jytxtCompanyHomePage">Home Page</label>
+                <input type="text" name="jytxtCompanyHomePage" id="jytxtCompanyHomePage" data-clear-btn="true" placeholder="Enter company home page">
+
+                <button type="button" id="jybtnSaveContatc" name="jybtnSaveContatc" data-role="button"
+                        class="ui-btn-active" style="width: 80px"> Save</button>
+            </form>
+
+        </div>
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <h1>&copy 2021 Jianliang Yan</h1>
+    </footer>
+</div>
+    <!------------------ setting page-------------------------------page 5 ---->
+    <div id="jypageSetting" data-role="page">
+        <header data-role="header" data-position="fixed" data-theme="b">
+            <h1>Setting</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li>
+                        <a href="#jyreviewConatactPage" data-theme="a" data-icon="home" class="ui-btn-icon-top"
+                        >View All</a>
+                    </li>
+                    <li>
+                        <a href="#jyAddContactPage" data-theme="a" data-icon="plus" class=" ui-btn-icon-top"
+                        >Add</a>
+                    </li>
+                    <li>
+                        <a href="#jypageSetting" data-theme="a" data-icon="grid"
+                           class=" ui-btn-active ui-btn-icon-top ui-state-persist">Setting</a>
+                    </li>
+                    <li>
+                        <a href="#jyShowMap" data-theme="a" data-icon="grid" class="ui-btn-icon-top ui-icon-location"
+                        >Location </a>
+                    </li>
+                    <li>
+                        <a href="#jyAboutPage" data-theme="a" data-icon="gear" class="ui-btn-icon-top ui-icon-user">Developer</a>
+                    </li>
+                </ul>
+
+            </div>
+        </header>
+        <section data-role="content">
+            <div>
+                <label for="jysetEmail">Default reviewer Email:</label>
+                <input type="text" name="jysetEmail" id="jysetEmail" value="jyan5619@conestogac.on.ca">
+                <button id="jybtnDefault" name="jybtnDefault"class="ui-btn-active">Save Default</button>
+                <button id="jybtnClear" name="jybtnClear" data-theme="b" >Clear Database</button>
+            </div>
+        </section>
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <h1>&copy 2021 Jianliang Yan</h1>
+        </footer>
+    </div>
+    <! ------------------ About developer page -----------------page 6------------------->
+    <div id="jyAboutPage" data-role="page">
+        <header data-role="header" data-position="fixed" data-theme="b">
+            <h1>Developer</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li>
+                        <a href="#jyreviewConatactPage" data-theme="a" data-icon="home" class="ui-btn-icon-top "
+                        >View all</a>
+                    </li>
+                    <li>
+                        <a href="#jyAddContactPage" data-theme="a" data-icon="plus" class=" ui-btn-icon-top"
+                        >Add</a>
+                    </li>
+                    <li>
+                        <a href="#jypageSetting" data-theme="a" data-icon="grid" class=" ui-btn-icon-top"
+                        >Setting</a>
+                    </li>
+                    <li>
+                        <a href="#jyShowMap" data-theme="a" data-icon="grid" class="ui-btn-icon-top ui-icon-location"
+                        >Location </a>
+                    </li>
+                    <li>
+                        <a href="#jyAboutPage" data-theme="a" data-icon="gear"
+                           class="ui-btn-active ui-btn-icon-top ui-state-persist ui-icon-user">Develper</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <section data-role="content">
+            <div>
+                <img src="img/banboo.jpg" height="200" width="300"/>
+            </div>
+            <div>
+                <p>Hello ,I am jian liang yan, I am just a newbor, and start learning programming
+                a two year ago, hope your like my app!</p>
+            </div>
+<!--            <button type="button" id="btnShow" name="btnShow" data-icon="home" data-iconpos="left"-->
+<!--                    data-theme="a" data-inline="true">Show my location-->
+<!--            </button>-->
+        </section>
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <h1>&copy 2021 Jianliang Yan</h1>
+        </footer>
+    </div>
+
+    <!------------------ edit page-------------------------------page-6----->
+<div id="jyEditFeedbackPage" data-role="page">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>Modify Feedback</h1>
+        <div data-role="navbar">
+            <ul>
+                <li>
+                    <a href="#jyreviewConatactPage" data-theme="a" data-icon="home"
+                       class=" ui-btn-icon-top ui-btn-active ui-state-persist"
+                    >View All</a>
+                </li>
+                <li>
+                    <a href="#jyAddContactPage" data-theme="a" data-icon="plus"
+                       class="ui-btn-icon-top "
+                    >Add</a>
+                </li>
+                <li>
+                    <a href="#jypageSetting" data-theme="a" data-icon="grid"
+                       class=" ui-btn-icon-top"
+                    >Setting</a>
+                </li>
+                <li>
+                    <a href="#jyShowMap" data-theme="a" data-icon="grid" class="ui-btn-icon-top ui-icon-location"
+                    >Location </a>
+                </li>
+                <li>
+                    <a href="#jypageSetting" data-theme="a" data-icon="gear"
+                       class=" ui-btn-icon-top ui-icon-user"
+                    >Developper</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section data-role="content">
+        <div id="jyEdit">
+            <form id="jyEditForm"name="jyeditForm">
+<
+<!--                </div>-->
+                <label for="jytxtNameEdit">Company Name:</label>
+                <input type="text" name="jytxtNameEdit" id="jytxtNameEdit" placeholder="Enter name">
+                <!--                // &#45;&#45; type of company &#45;&#45;//-->
+                <label for="jytypeEdit">Type:</label>
+                <select name="jytypeEdit" id="jytypeEdit"> </select>
+                <!--                // &#45;&#45; email address-&#45;&#45; //-->
+
+                <!--                //-&#45;&#45; Description of the company &#45;&#45;//-->
+                <label for="jyReviewEdit">Description:</label>
+                <textarea name="jyReviewEdit" id="jyReviewEdit" data-clear-btn="true"cols="30" rows="10"
+                          placeholder=" Enter the business description of this company"></textarea>
+                <h1>Contact Information</h1>
+                <!--                // contact person full name &#45;&#45;//-->
+                <label for="jytxtFullNameEdit">Full Name</label>
+                <input type="text" name="jytxtFullNameEdit" id="jytxtFullNameEdit" data-clear-btn="true" placeholder="Enter full Name">
+                <!--               contact phone number &#45;&#45;//-->
+                <label for="jyPhoneNumberEdit">Phone Number:</label>
+                <input type="number" name="jyPhoneNumberEdit" id="jyPhoneNumberEdit" data-clear-btn="true" placeholder="enter 9 digits phone number">
+                <!--                contact email address-->
+                <label for="jytxtEmailEdit">Email:</label>
+                <input type="text" name="jytxtEmailEdit" id="jytxtEmailEdit" data-clear-btn="true"placeholder="Enter email">
+                <!--                company address-->
+                <label for="jytxtAddressEdit">Company Address</label>
+                <input type="text" name="jytxtAddressEdit" id="jytxtAddressEdit" data-clear-btn="true" placeholder="Enter company address">
+                <!--                  company home page-->
+                <label for="jytxtCompanyHomePageEdit">Home Page</label>
+                <input type="text" name="jytxtCompanyHomePageEdit" id="jytxtCompanyHomePageEdit" data-clear-btn="true" placeholder="Enter company home page">
+
+              <div data-role="controlgroup" data-type="horizontal">
+
+                <a href="#" data-role="button" data-theme="b" id="jybtnDelete">Delete </a>
+                <a href="#" data-role="button" class="ui-btn-active" id="jybtnUpdate">Update </a>
+            </div>
+            </form>
+        </div>
+    </section>
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <h1>&copy 2021 Jianliang Yan</h1>
+    </footer>
+</div>
+<!-- ---------------------------------  about my location -->
+<div id="jyShowMap" data-role="page" data-url="jyMap">
+    <header data-role="header" data-position="fixed" data-theme="b">
+        <h1>Location</h1>
+        <div data-role="navbar">
+            <ul>
+                <li>
+                    <a href="#jyreviewConatactPage" data-theme="a" data-icon="home" class="ui-btn-icon-top "
+                    >View all</a>
+                </li>
+                <li>
+                    <a href="#jyAddContactPage" data-theme="a" data-icon="plus" class=" ui-btn-icon-top"
+                    >Add</a>
+                </li>
+                <li>
+                    <a href="#jyShowMap" data-theme="a" data-icon="grid" class="ui-btn-icon-top ui-icon-location"
+                    >Location </a>
+                </li>
+                <li>
+                    <a href="#jyShowMap" data-theme="a" data-icon="grid"
+                       class="ui-btn-active ui-btn-icon-top ui-state-persist"
+                    >Location </a>
+                </li>
+                <li>
+                    <a href="#jyAboutPage" data-theme="a" data-icon="gear"
+                       class="ui-btn-icon-top ui-icon-user">Develper</a>
+                </li>
+            </ul>
+
+        </div>
+    </header>
+
+        <button type="button" id="btnShow" name="btnShow" data-icon="home" data-iconpos="left"
+                data-theme="a" data-inline="true">Show Map
+        </button>
+
+        <div style="width:100%; height:100%" id="mapContainer"></div>
+
+
+    <footer data-role="footer" data-position="fixed" data-theme="b">
+        <h1>&copy 2021 Jianliang Yan</h1>
+    </footer>
+</div>
+
+</body>
+</html>
